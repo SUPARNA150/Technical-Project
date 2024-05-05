@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register and Login Page</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+   
+  </head>
+  <body>
+    <header>
+      <h3>Suparana Hospital</h3>
+    </header>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="container">
+      <h2 class="text-center">Register and Login Page</h2>
+      <p class="text-center toggle" id="register-toggle">
+        Don't have an account? Register here!
+      </p>
+      <p class="text-center toggle" id="login-toggle">
+        Already have an account? Login here!
+      </p>
+
+      <!-- Register Form -->
+      <form action="/register" method="post" class="register-form">
+        <div class="form-group">
+          <label for="username">UserName:</label>
+          <input type="text" class="form-control" id="username" required />
+        </div>
+        <div class="form-group">
+          <label for="fname">FirstName:</label>
+          <input type="text" class="form-control" id="fname" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">LastName:</label>
+          <input type="text" class="form-control" id="lname" required />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" required />
+        </div>
+        <div class="form-group">
+          <label for="cpwd">Confirm Password:</label>
+          <input type="password" class="form-control" id="cpwd" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email ID:</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile Number:</label>
+          <input type="number" class="form-control" id="mobile" required />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              required
+            />
+            <label class="form-check-label" for="male"> Male </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+              required
+            />
+            <label class="form-check-label" for="female"> Female </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city">City:</label>
+          <select class="form-control" id="city" required>
+            <option value="city1">City 1</option>
+            <option value="city2">City 2</option>
+            <option value="city3">City 3</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+
+      <!-- Login Form -->
+      <form action="/login" method="post" class="login-form">
+        <div class="form-group">
+          <label for="userid">User ID:</label>
+          <input type="text" class="form-control" id="userid" required />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+
+    <!-- FOOTER SECTION STARTS -->
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+      <!-- Section: Social media -->
+      <section
+        class="d-flex p-2 "
+      >
+        <!-- Right -->
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+
+      <!-- Section: Links  -->
+      <section class="footer">
+        <div class="footer_container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>Company name
+              </h6>
+              <p>
+                Here you can use rows and columns to organize your footer
+                content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Products</h6>
+              <p>
+                <a class="text-reset">Angular</a>
+              </p>
+              <p>
+                <a class="text-reset">React</a>
+              </p>
+              <p>
+                <a  class="text-reset">Vue</a>
+              </p>
+              <p>
+                <a class="text-reset">Laravel</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+              <p>
+                <a  class="text-reset">Pricing</a>
+              </p>
+              <p>
+                <a  class="text-reset">Settings</a>
+              </p>
+              <p>
+                <a  class="text-reset">Orders</a>
+              </p>
+              <p>
+                <a  class="text-reset">Help</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+              <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                info@example.com
+              </p>
+              <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+
+      <!-- Copyright -->
+      <!-- <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/"
+          >MDBootstrap.com</a
+        >
+      </div> -->
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- FOOTER SECTION ENDS -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
