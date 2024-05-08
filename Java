@@ -1,1 +1,220 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
+public class PatientManagementSystem {
+private static Map<Integer, Patient> patients = new HashMap<>();
+private static int nextPatientId = 1;
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int choice;
+
+    do {
+        System.out.println("Menu:");
+        System.out.println("1. Patient Registration");
+        System.out.println("2. View Patient Details");
+        System.out.println("3. Search Patient by PID");
+        System.out.println("4. Update Patients by Email Domain");
+        System.out.println("5. Delete Patients by Mobile number");
+        System.out.println("6. Exit");
+        System.out.print("Enter your choice: ");
+        choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("You have selected the Patient Registration Feature.");
+                registerPatient(scanner);
+                break;
+            case 2:
+                System.out.println("You have selected the View Patient Details Feature.");
+                viewPatientDetails();
+                break;
+            case 3:
+                System.out.println("You have selected the Search Patient Feature.");
+                searchPatientById(scanner);
+                break;
+            case 4:
+                System.out.println("You have selected the Update Patients by Email Domain Feature.");
+                updatePatientsByEmailDomain(scanner);
+                break;
+            case 5:
+                System.out.println("You have selected the Delete Patients by Mobile number Feature.");
+                deletePatientsByMobileNumber(scanner);
+                break;
+            case 6:
+                System.out.println("Good Bye Administrator!!. Terminating the Program.");
+                break;
+            default:
+                System.out.println("You have selected an inappropriate option. Kindly select an appropriate option.");
+        }
+    } while (choice != 6);
+
+    scanner.close();
+}
+
+private static void registerPatient(Scanner scanner) {
+    System.out.print("Enter First Name: ");
+    String firstName = scanner.next();
+
+    System.out.print("Enter Last Name: ");
+    String lastName = scanner.next();
+
+    System.out.print("Enter Email ID: ");
+    String email = scanner.next();
+
+    System.out.print("Enter Mobile Number: ");
+    long mobileNumber = scanner.nextLong();
+
+    System.out.print("Enter Gender: ");
+    String gender = scanner.next();
+
+    System.out.print("Enter City: ");
+    String city = scanner.next();
+
+    System.out.print("Enter Doctor ID: ");
+    String doctorId = scanner.next();
+
+    System.out.print("Enter Doctor Name: ");
+    String doctorName = scanner.next();
+
+    System.out.print("Enter Address: ");
+    String address = scanner.next();
+
+    System.out.print("Enter Contact No: ");
+    long contactNo = scanner.nextLong();
+
+    int pid = nextPatientId++;
+    Patient patient = new Patient(pid, firstName, lastName, email, mobileNumber, gender, city, doctorId, doctorName, address, contactNo);
+    patients.put(pid, patient);
+
+    System.out.println("Patient registered successfully with PID: " + pid);
+}
+
+private static void viewPatientDetails() {
+    System.out.println("Patient Details:");
+    for (Map.Entry<Integer, Patient> entry : patients.entrySet()) {
+        System.out.println(entry.getValue());
+    }
+}
+
+private static void searchPatientById(Scanner scanner) {
+    System.out.print("Enter PID: ");
+    int pid = scanner.nextInt();
+    if (patients.containsKey(pid)) {
+        System.out.println("Patient found:");
+        System.out.println(patients.get(pid));
+    } else {
+        System.out.println("Patient not found.");
+    }
+}
+
+private static void updatePatientsByEmailDomain(Scanner scanner) {
+    System.out.print("Enter Email Domain: ");
+    String emailDomain = scanner.next();
+    for (Patient patient : patients.values()) {
+        if (patient.getEmail().endsWith("@" + emailDomain)) {
+            // Update patient information here if needed
+            System.out.println("Patient with email domain '" + emailDomain + "' updated.");
+        }
+    }
+}
+
+private static void deletePatientsByMobileNumber(Scanner scanner) {
+    System.out.print("Enter Mobile Number: ");
+    long mobileNumber = scanner.nextLong();
+    for (Map.Entry<Integer, Patient> entry : patients.entrySet()) {
+        if (entry.getValue().getMobileNumber() == mobileNumber) {
+            patients.remove(entry.getKey());
+            System.out.println("Patient with mobile number '" + mobileNumber + "' deleted.");
+            return;
+        }
+    }
+    System.out.println("Patient with mobile number '" + mobileNumber + "' not found.");
+}
+
+private static class Patient {
+    private int pid;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private long mobileNumber;
+    private String gender;
+    private String city;
+    private String doctorId;
+    private String doctorName;
+    private String address;
+    private long contactNo;
+
+    public Patient(int pid, String firstName, String lastName, String email, long mobileNumber, String gender, String city, String doctorId, String doctorName, String address, long contactNo) {
+        this.pid = pid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.mobileNumber = mobileNumber;
+        this.gender = gender;
+        this.city = city;
+        this.doctorId = doctorId;
+        this.doctorName = doctorName;
+        this.address = address;
+        this.contactNo = contactNo;
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public long getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public long getContactNo() {
+        return contactNo;
+    }
+
+    @Override
+    public String toString() {
+        return "PID: " + pid +
+                ", Name: " + firstName + " " + lastName +
+                ", Email: " + email +
+                ", Mobile Number: " + mobileNumber +
+                ", Gender: " + gender +
+                ", City: " + city +
+                ", Doctor ID: " + doctorId +
+                ", Doctor Name: " + doctorName +
+                ", Address: " + address +
+                ", Contact No: " + contactNo;
+    }
+}
+}
