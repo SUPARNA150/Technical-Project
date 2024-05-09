@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class HospitalManagementSystem {
-    private static Map<Integer, Patient> patients = new HashMap<>();
-    private static int nextPatientId = 1;
+    private static Map<Long, Patient> patients = new HashMap<>();
+    private static long nextPatientId = 1;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -104,69 +104,19 @@ public class HospitalManagementSystem {
     // Generate PID
     int year = Calendar.getInstance().get(Calendar.YEAR);
     int hospitalCode = 1234; // Replace with actual hospital code
-    int serialNumber = ++nextPatientId;
+    long serialNumber = ++nextPatientId;
     long pid = Long.parseLong(String.format("%04d%04d%02d", year, hospitalCode, serialNumber));
 
     Patient patient = new Patient(pid, firstName, lastName, email, mobileNumber, gender, city, doctorId, doctorName, address, contactNo);
-    patients.put(serialNumber, patient);
+    patients.put(pid, patient);
 
     System.out.println("Patient registered successfully with PID: " + pid);
 }
 
-
-    /*private static void registerPatient(Scanner sc) {
-        System.out.print("Enter First Name: ");
-        String firstName = sc.next();
-
-        System.out.print("Enter Last Name: ");
-        String lastName = sc.next();
-
-        System.out.print("Enter Email ID: ");
-        String email = sc.next();
-
-        System.out.print("Enter Mobile Number: ");
-        long mobileNumber = sc.nextLong();
-
-        System.out.print("Enter Gender: ");
-        String gender = sc.next();
-
-        System.out.print("Enter City: ");
-        String city = sc.next();
-
-        System.out.print("Enter Doctor ID: ");
-        String doctorId = sc.next();
-
-        sc.nextLine();
-
-        System.out.print("Enter Doctor Name: ");
-        String doctorName = sc.nextLine();
-
-        System.out.print("Enter Address: ");
-        String address = sc.nextLine();
-
-        System.out.print("Enter Contact No: ");
-        long contactNo = sc.nextLong();
-
-        int pid = nextPatientId++;
-        Patient patient = new Patient(pid, firstName, lastName, email, mobileNumber, gender, city, doctorId, doctorName, address, contactNo);
-        patients.put(pid, patient);
-
-        System.out.println("Patient registered successfully with PID: " + pid);
-    }
-    */
-
-    /*
-    private static void viewPatientDetails() {
-        System.out.println("Patient Details:");
-        for (Map.Entry<Integer, Patient> entry : patients.entrySet()) {
-            System.out.println(entry.getValue());
-        }
-    }
-    */
     
     private static void viewPatientDetails() {
-        System.out.println("Patient Details:");
-        for (Map.Entry<Integer, Patient> entry : patients.entrySet()) {
+        System.out.println("Patient Details:\n");
+        for (Map.Entry<Long, Patient> entry : patients.entrySet()) {
             Patient patient = entry.getValue();
             System.out.println("PID: " + patient.getPid());
             System.out.println("Name: " + patient.getFirstName() + " " + patient.getLastName());
@@ -183,34 +133,79 @@ public class HospitalManagementSystem {
     }
     
     
-    
     private static void searchPatientById(Scanner sc) {
         System.out.print("Enter PID: ");
-        int pid = sc.nextInt();
+        long pid = sc.nextLong();
         if (patients.containsKey(pid)) {
             System.out.println("Patient found:");
             System.out.println(patients.get(pid));
         } else {
             System.out.println("Patient not found.");
         }
-    }
+    } 
 
     private static void updatePatientsByEmailDomain(Scanner sc) {
         System.out.print("Enter Email Domain: ");
         String emailDomain = sc.next();
+        boolean updated = false;
         for (Patient patient : patients.values()) {
-            if (patient.getEmail().endsWith("@" + emailDomain)) 
-            {
-                // Update patient information here if needed
-                System.out.println("Patient with email domain '" + emailDomain + "' updated.");
+            if (patient.getEmail().equals(emailDomain)) {
+                // Update patient information here
+                System.out.println("Enter new First Name: ");
+                String newFirstName = sc.next();
+                patient.firstName = newFirstName;
+    
+                System.out.println("Enter new Last Name: ");
+                String newLastName = sc.next();
+                patient.lastName = newLastName;
+    
+                System.out.println("Enter new Mobile Number: ");
+                long newMobileNumber = sc.nextLong();
+                patient.mobileNumber = newMobileNumber;
+    
+                System.out.println("Enter new Gender: ");
+                String newGender = sc.next();
+                patient.gender = newGender;
+    
+                System.out.println("Enter new City: ");
+                String newCity = sc.next();
+                patient.city = newCity;
+    
+                System.out.println("Enter new Doctor ID: ");
+                String newDoctorId = sc.next();
+                patient.doctorId = newDoctorId;
+    
+                sc.nextLine(); // Consume newline
+    
+                System.out.println("Enter new Doctor Name: ");
+                String newDoctorName = sc.nextLine();
+                patient.doctorName = newDoctorName;
+    
+                System.out.println("Enter new Address: ");
+                String newAddress = sc.nextLine();
+                patient.address = newAddress;
+    
+                System.out.println("Enter new Contact No: ");
+                long newContactNo = sc.nextLong();
+                patient.contactNo = newContactNo;
+    
+                updated = true;
             }
         }
+        if (updated) {
+            System.out.println("Patient(s) with email domain '" + emailDomain + "' updated.");
+        } else {
+            System.out.println("No patient found with email domain '" + emailDomain + "'.");
+        }
     }
+    
+    
+
 
     private static void deletePatientsByMobileNumber(Scanner sc) {
         System.out.print("Enter Mobile Number: ");
         long mobileNumber = sc.nextLong();
-        for (Map.Entry<Integer, Patient> entry : patients.entrySet()) {
+        for (Map.Entry<Long, Patient> entry : patients.entrySet()) {
             if (entry.getValue().getMobileNumber() == mobileNumber) {
                 patients.remove(entry.getKey());
                 System.out.println("Patient with mobile number '" + mobileNumber + "' deleted.");
