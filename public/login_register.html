@@ -6,9 +6,7 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="css/login_register.css">
-
-   
+    <link rel="stylesheet" type="text/css" href="css/login_register.css" />
   </head>
   <body>
     <header>
@@ -30,7 +28,6 @@
         Already have an account? Login here!
       </p>
 
-      <!-- Register Form -->
       <form action="/register" method="post" class="register-form">
         <div class="form-group">
           <label for="username">UserName:</label>
@@ -93,10 +90,15 @@
             <option value="city3">City 3</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          onclick="alert('Registration Sucessful')"
+        >
+          Register
+        </button>
       </form>
 
-      <!-- Login Form -->
       <form action="/login" method="post" class="login-form">
         <div class="form-group">
           <label for="userid">User ID:</label>
@@ -110,32 +112,21 @@
       </form>
     </div>
 
-    <!-- FOOTER SECTION STARTS -->
-
     <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-      <!-- Section: Links  -->
       <section class="footer">
         <div class="footer_container text-center text-md-start mt-5">
-          <!-- Grid row -->
           <div class="row mt-3">
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <!-- Content -->
               <h6 class="text-uppercase fw-bold mb-4">
                 <i class="fas fa-gem me-3"></i>TCS Hospital
               </h6>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
+                ipsum dolor sit amet, consectetur adipisicing elit.
               </p>
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">Useful Links</h6>
               <p>
                 <a class="text-reset">Home</a>
@@ -144,38 +135,34 @@
                 <a class="text-reset">About</a>
               </p>
               <p>
-                <a  class="text-reset">Service</a>
+                <a class="text-reset">Service</a>
               </p>
               <p>
                 <a class="text-reset">Contact</a>
               </p>
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">Useful Links</h6>
               <p>
-                <a  class="text-reset">Doctors</a>
+                <a class="text-reset">Doctors</a>
               </p>
               <p>
-                <a  class="text-reset">Privacy</a>
+                <a class="text-reset">Privacy</a>
               </p>
               <p>
-                <a  class="text-reset">Emergency</a>
+                <a class="text-reset">Emergency</a>
               </p>
               <p>
-                <a  class="text-reset">Help</a>
+                <a class="text-reset">Help</a>
               </p>
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-              <p><i class="fas fa-home me-3"></i> Kolkata, West Bengal, India</p>
+              <p>
+                <i class="fas fa-home me-3"></i> Kolkata, West Bengal, India
+              </p>
               <p>
                 <i class="fas fa-envelope me-3"></i>
                 info@example.com
@@ -183,16 +170,10 @@
               <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
               <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
             </div>
-            <!-- Grid column -->
           </div>
-          <!-- Grid row -->
         </div>
       </section>
-      <!-- Section: Links  -->
-
     </footer>
-
-    <!-- FOOTER SECTION ENDS -->
 
     <script src="js/script.js"></script>
   </body>
