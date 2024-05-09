@@ -1,0 +1,55 @@
+-- Create Patient Table
+CREATE TABLE Patient (
+    PatientId INT PRIMARY KEY,
+    PatientName VARCHAR(100),
+    RoomNumber INT,
+    DoctorId INT,
+    DoctorName VARCHAR(100),
+    Age INT,
+    Gender VARCHAR(10),
+    Weight DECIMAL(5, 2),
+    Height DECIMAL(5, 2),
+    BloodGroup VARCHAR(5),
+    Address VARCHAR(255),
+    ContactNo VARCHAR(15)
+);
+
+-- Insert Demo Records
+INSERT INTO Patient (PatientId, PatientName, RoomNumber, DoctorId, DoctorName, Age, Gender, Weight, Height, BloodGroup, Address, ContactNo) VALUES
+(1, 'John Doe', 101, 101, 'Dr. Smith', 35, 'Male', 75.5, 175, 'A+', '123 Main St, City', '1234567890'),
+(2, 'Jane Smith', 102, 102, 'Dr. Johnson', 28, 'Female', 60.2, 160, 'B-', '456 Elm St, Town', '9876543210'),
+(3, 'Michael Johnson', 103, 103, 'Dr. Brown', 45, 'Male', 90.7, 180, 'O+', '789 Oak St, Village', '4561237890'),
+(4, 'Emily Davis', 104, 104, 'Dr. Wilson', 22, 'Female', 55.0, 155, 'AB+', '321 Pine St, County', '6547893210'),
+(5, 'Christopher Lee', 105, 105, 'Dr. Martinez', 50, 'Male', 80.3, 170, 'A-', '987 Cedar St, State', '7893216540'),
+(6, 'Sophia Garcia', 106, 106, 'Dr. Anderson', 33, 'Female', 65.8, 165, 'B+', '654 Birch St, Province', '3219876540'),
+(7, 'David Rodriguez', 107, 107, 'Dr. Thompson', 40, 'Male', 85.1, 175, 'AB-', '147 Maple St, Country', '8904561230'),
+(8, 'Olivia Hernandez', 108, 108, 'Dr. White', 29, 'Female', 58.6, 158, 'O-', '753 Walnut St, Republic', '2345678901'),
+(9, 'Matthew Martinez', 109, 109, 'Dr. Taylor', 60, 'Male', 75.0, 172, 'A+', '369 Pineapple St, Kingdom', '8901234567'),
+(10, 'Emma Wilson', 110, 110, 'Dr. Garcia', 25, 'Female', 52.3, 150, 'B-', '852 Banana St, Empire', '5432109876');
+
+-- View Patient Details
+SELECT * FROM Patient;
+
+
+
+
+Capture Patient's Personal Data:
+--------------------------------------------------------
+INSERT INTO Patient (PatientId, PatientName, RoomNumber, DoctorId, DoctorName, Age, Gender, Weight, Height, BloodGroup, Address, ContactNo) 
+VALUES (11, 'Michelle Brown', 111, 111, 'Dr. Smithson', 38, 'Female', 63.5, 163, 'B+', '789 Pine St, City', '1234567890');
+
+
+View Patient Information:
+---------------------------
+
+SELECT * FROM Patient;
+
+
+Update Patient Information:
+----------------------------------------
+
+UPDATE Patient
+SET Address = 'New Address'
+WHERE PatientId = 11;
+
+--------------------------------------------------------
