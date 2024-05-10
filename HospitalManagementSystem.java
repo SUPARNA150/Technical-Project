@@ -11,13 +11,14 @@ public class HospitalManagementSystem {
         Scanner sc = new Scanner(System.in);
         int choice;
 
-        // Admin Login
+        // Admin Login 
         String pwd = "Kolkata@1";
         System.out.println("Welcome to Admin Login Page:");
         System.out.println("Enter your password.");
         String pwd_check = sc.nextLine();
 
-        if (pwd_check.equals(pwd)) {
+        if(pwd_check.equals(pwd))
+        {
             System.out.println("Welcome Admin.\n\n");
             do {
                 System.out.println("Menu:");
@@ -29,7 +30,7 @@ public class HospitalManagementSystem {
                 System.out.println("6. Exit");
                 System.out.print("Enter your choice: ");
                 choice = sc.nextInt();
-
+    
                 switch (choice) {
                     case 1:
                         System.out.println("You have selected the Patient Registration Feature.");
@@ -55,11 +56,12 @@ public class HospitalManagementSystem {
                         System.out.println("Good Bye Administrator!!. Terminating the Program.");
                         break;
                     default:
-                        System.out.println(
-                                "You have selected an inappropriate option. Kindly select an appropriate option.");
+                        System.out.println("You have selected an inappropriate option. Kindly select an appropriate option.");
                 }
             } while (choice != 6);
-        } else {
+        }
+        else
+        {
             System.out.println("Invalid Password!!");
         }
 
@@ -67,51 +69,51 @@ public class HospitalManagementSystem {
     }
 
     private static void registerPatient(Scanner sc) {
-        System.out.print("Enter First Name: ");
-        String firstName = sc.next();
+    System.out.print("Enter First Name: ");
+    String firstName = sc.next();
 
-        System.out.print("Enter Last Name: ");
-        String lastName = sc.next();
+    System.out.print("Enter Last Name: ");
+    String lastName = sc.next();
 
-        System.out.print("Enter Email ID: ");
-        String email = sc.next();
+    System.out.print("Enter Email ID: ");
+    String email = sc.next();
 
-        System.out.print("Enter Mobile Number: ");
-        long mobileNumber = sc.nextLong();
+    System.out.print("Enter Mobile Number: ");
+    long mobileNumber = sc.nextLong();
 
-        System.out.print("Enter Gender: ");
-        String gender = sc.next();
+    System.out.print("Enter Gender: ");
+    String gender = sc.next();
 
-        System.out.print("Enter City: ");
-        String city = sc.next();
+    System.out.print("Enter City: ");
+    String city = sc.next();
 
-        System.out.print("Enter Doctor ID: ");
-        String doctorId = sc.next();
+    System.out.print("Enter Doctor ID: ");
+    String doctorId = sc.next();
 
-        sc.nextLine();
+    sc.nextLine();
 
-        System.out.print("Enter Doctor Name: ");
-        String doctorName = sc.nextLine();
+    System.out.print("Enter Doctor Name: ");
+    String doctorName = sc.nextLine();
 
-        System.out.print("Enter Address: ");
-        String address = sc.nextLine();
+    System.out.print("Enter Address: ");
+    String address = sc.nextLine();
 
-        System.out.print("Enter Contact No: ");
-        long contactNo = sc.nextLong();
+    System.out.print("Enter Contact No: ");
+    long contactNo = sc.nextLong();
 
-        // Generate PID
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        int hospitalCode = 1234; // Replace with actual hospital code
-        long serialNumber = ++nextPatientId;
-        long pid = Long.parseLong(String.format("%04d%04d%02d", year, hospitalCode, serialNumber));
+    // Generate PID
+    int year = Calendar.getInstance().get(Calendar.YEAR);
+    int hospitalCode = 1234; // Replace with actual hospital code
+    long serialNumber = ++nextPatientId;
+    long pid = Long.parseLong(String.format("%04d%04d%02d", year, hospitalCode, serialNumber));
 
-        Patient patient = new Patient(pid, firstName, lastName, email, mobileNumber, gender, city, doctorId, doctorName,
-                address, contactNo);
-        patients.put(pid, patient);
+    Patient patient = new Patient(pid, firstName, lastName, email, mobileNumber, gender, city, doctorId, doctorName, address, contactNo);
+    patients.put(pid, patient);
 
-        System.out.println("Patient registered successfully with PID: " + pid);
-    }
+    System.out.println("Patient registered successfully with PID: " + pid);
+}
 
+    
     private static void viewPatientDetails() {
         System.out.println("Patient Details:\n");
         for (Map.Entry<Long, Patient> entry : patients.entrySet()) {
@@ -129,7 +131,8 @@ public class HospitalManagementSystem {
             System.out.println();
         }
     }
-
+    
+    
     private static void searchPatientById(Scanner sc) {
         System.out.print("Enter PID: ");
         long pid = sc.nextLong();
@@ -139,7 +142,7 @@ public class HospitalManagementSystem {
         } else {
             System.out.println("Patient not found.");
         }
-    }
+    } 
 
     private static void updatePatientsByEmailDomain(Scanner sc) {
         System.out.print("Enter Email Domain: ");
@@ -151,41 +154,41 @@ public class HospitalManagementSystem {
                 System.out.println("Enter new First Name: ");
                 String newFirstName = sc.next();
                 patient.firstName = newFirstName;
-
+    
                 System.out.println("Enter new Last Name: ");
                 String newLastName = sc.next();
                 patient.lastName = newLastName;
-
+    
                 System.out.println("Enter new Mobile Number: ");
                 long newMobileNumber = sc.nextLong();
                 patient.mobileNumber = newMobileNumber;
-
+    
                 System.out.println("Enter new Gender: ");
                 String newGender = sc.next();
                 patient.gender = newGender;
-
+    
                 System.out.println("Enter new City: ");
                 String newCity = sc.next();
                 patient.city = newCity;
-
+    
                 System.out.println("Enter new Doctor ID: ");
                 String newDoctorId = sc.next();
                 patient.doctorId = newDoctorId;
-
-                sc.nextLine();
-
+    
+                sc.nextLine(); // Consume newline
+    
                 System.out.println("Enter new Doctor Name: ");
                 String newDoctorName = sc.nextLine();
                 patient.doctorName = newDoctorName;
-
+    
                 System.out.println("Enter new Address: ");
                 String newAddress = sc.nextLine();
                 patient.address = newAddress;
-
+    
                 System.out.println("Enter new Contact No: ");
                 long newContactNo = sc.nextLong();
                 patient.contactNo = newContactNo;
-
+    
                 updated = true;
             }
         }
@@ -195,6 +198,9 @@ public class HospitalManagementSystem {
             System.out.println("No patient found with email domain '" + emailDomain + "'.");
         }
     }
+    
+    
+
 
     private static void deletePatientsByMobileNumber(Scanner sc) {
         System.out.print("Enter Mobile Number: ");
@@ -222,8 +228,7 @@ public class HospitalManagementSystem {
         private String address;
         private long contactNo;
 
-        public Patient(long pid, String firstName, String lastName, String email, long mobileNumber, String gender,
-                String city, String doctorId, String doctorName, String address, long contactNo) {
+        public Patient(long pid, String firstName, String lastName, String email, long mobileNumber, String gender, String city, String doctorId, String doctorName, String address, long contactNo) {
             this.pid = pid;
             this.firstName = firstName;
             this.lastName = lastName;
